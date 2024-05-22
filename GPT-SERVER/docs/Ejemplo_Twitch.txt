@@ -1,0 +1,91 @@
+# tabla con canales de Twitch, cada fila es un canal
+# campos: nombre, url, subs, viewers
+canales = [
+			[ 'Ibai', 'http://twitch.tv/ibai', 8400123, 59859 ],
+			[ 'AuronPlay', 'http://twitch.tv/AuronPlay', 10700123, 106996 ],
+			[ 'Xokas', 'http://twitch.tv/xokas', 1323421, 11511 ],
+			[ 'Rubius', 'http://twitch.tv/elrubius', 1423563, 36941 ]
+		  ]
+
+def alta (canales):
+	nombre = input('Introduce el nombre del canal: ')
+	url = input('Introduce la dirección del canal: ')
+	subs = int(input('Introduce el nº de suscriptores del canal: '))
+	viewers = input('Introduce el nº de viewers del canal: ')
+	canal = [nombre, url, subs, viewers]
+	canales.append(canal)
+
+def menu (pregunta):
+	for i in range(len(canales)):
+		print(f'{i} - {canales[i][0]}')
+	posicion = int(input(pregunta))
+	return posicion
+
+def baja (canales):
+	posicion = menu('¿Qué canal quieres borrar? ')
+	canales.remove(canales[posicion])
+
+def modificar (canales):
+	posicion = menu('¿Qué canal quieres modificar? ')
+	canales.remove(canales[posicion])
+	alta(canales)
+
+def mostrarMasSubs(canales):
+	mayor = canales[0]
+	for elemento in canales:
+		if (elemento[2] > mayor[2]):
+			mayor = elemento
+	print(f'El canal con más subs es: {mayor[0]} ({mayor[2]} subs)')
+
+def mostrarMenosViewers(canales):
+	menor = canales[0]
+	for elemento in canales:
+		if (elemento[3] < menor[3]):
+			menor = elemento
+	print(f'El canal con menos viewers es: {menor[0]} ({menor[3]} viewers)')
+
+def mostrarMediaViewers(canales):
+	suma = 0
+	for elemento in canales:
+		suma = suma + elemento[3]
+	media = suma / len(canales)	
+	print(f'La media de viewers es: {media} viewers')
+
+while (True):
+	print('Gestiona tus suscripciones en Twitch:')
+	print('1 - Muestra tus suscripciones')
+	print('2 - Añade una suscripción nueva')
+	print('3 - Borra una suscripción')
+	print('4 - Modifica una suscripción')
+	print('5 - Mostrar el canal con más subs')
+	print('6 - Mostrar el canal con menos viewers')
+	print('7 - Mostrar la media de viewers de tus canales')
+	print('0 - Salir')
+	opcion = int(input('¿Opción? '))
+
+	if (opcion == 1):
+		# mostrar
+		print(canales)
+	elif (opcion == 2):
+		# añadir
+		alta(canales)
+	elif (opcion == 3):
+		# añadir
+		baja(canales)
+	elif (opcion == 4):
+		# añadir
+		modificar(canales)
+	elif (opcion == 5):
+		# mostrar canal con más subs
+		mostrarMasSubs(canales)
+	elif (opcion == 6):
+		# mostrar canal con menos viewers
+		mostrarMenosViewers(canales)
+	elif (opcion == 7):
+		# mostrar media de viewers
+		mostrarMediaViewers(canales)
+	elif (opcion == 0):
+		# salir
+		break
+
+print('Gracias por haber usado este programa :)')

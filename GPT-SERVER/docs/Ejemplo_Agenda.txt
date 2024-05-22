@@ -1,0 +1,30 @@
+# Escritura de datos
+
+agenda = [
+			{ 'nombre': 'Pablo', 'email': 'garaizar@deusto.es', 'telf': 563737745 },
+			{ 'nombre': 'Borja', 'email': 'bosanz@deusto.es', 'telf': 8745737345 },
+			{ 'nombre': 'Mª Luz', 'email': 'mlguenaga@deusto.es', 'telf': 757573626 },
+			{ 'nombre': 'Jenny', 'email': 'jfajardo@deusto.es', 'telf': 2341325323 }
+		 ]
+
+fichero = open('datos.csv', 'w')
+
+for elemento in agenda:
+	fichero.write(elemento['nombre'] + ';' + elemento['email'] + ';' + str(elemento['telf']) + ';' + '\n')
+
+fichero.close()
+
+# Lectura de datos
+
+agenda = []
+
+fichero = open('datos.csv', 'r')
+datos = fichero.readlines()
+fichero.close()
+
+for elemento in datos:
+	campos = elemento.split(';')
+	contacto = { 'nombre': campos[0], 'email': campos[1], 'telf': campos[2] }
+	agenda.append(contacto)
+
+print(agenda)

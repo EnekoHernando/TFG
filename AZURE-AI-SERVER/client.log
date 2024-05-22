@@ -1,0 +1,26 @@
+INFO:root:Conectado al servidor localhost en el puerto 12345.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+ERROR:root:Error en la comunicación: [WinError 10053] Se ha anulado una conexión establecida por el software en su equipo host
+INFO:root:Conexión del cliente cerrada.
+INFO:root:Conectado al servidor localhost en el puerto 12345.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Conectado al servidor localhost en el puerto 12345.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Conectado al servidor localhost en el puerto 12345.
+INFO:root:Conectado al servidor localhost en el puerto 12345.
+INFO:root:Mensaje enviado y respuesta recibida.
+INFO:root:Mensaje enviado y respuesta recibida.
+ERROR:root:Error en la comunicación: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+INFO:root:Conexión del cliente cerrada.
