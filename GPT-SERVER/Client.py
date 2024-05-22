@@ -9,8 +9,12 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 host = 'localhost'
 port = 12345
-client_socket.connect((host, port))
-logging.info(f"Conectado al servidor {host} en el puerto {port}.")
+try:
+    client_socket.connect((host, port))
+    logging.info(f"Conectado al servidor {host} en el puerto {port}.")
+except Exception as e:
+    logging.error(f"No se pudo conectar al servidor: {e}")
+    exit(1)
 
 try:
     while True:
@@ -26,7 +30,6 @@ try:
             logging.info(f"Mensaje enviado y respuesta recibida.")
         except Exception as e:
             logging.error(f"Error en la comunicación: {e}")
-            client_socket.close()
             break
 finally:
     client_socket.close()

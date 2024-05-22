@@ -1,6 +1,7 @@
 import socket
 import logging
 import openai
+import threading
 import time
 from openai import AzureOpenAI
 import os
@@ -76,21 +77,11 @@ def chatbot(input_text):
         logging.error(f"Error during API call: {e}")
         return "Error while processing your request."
 
-# Configuración del servidor sin SSL
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host = 'localhost'
-port = 12345
-server_socket.bind((host, port))
-server_socket.listen(5)
-logging.info(f"Servidor escuchando en {host}:{port} sin SSL...")
-print(f"Servidor iniciado y escuchando en {host}:{port}")
+def handle_client(client_socket, addr):
+    logging.info(f'Conectado con {addr}')
+    print(f"Conexión establecida con {addr}")
 
-try:
-    while True:
-        client_socket, addr = server_socket.accept()
-        logging.info(f'Conectado con {addr}')
-        print(f"Conexión establecida con {addr}")
-
+    try:
         while True:  # Mantener la conexión abierta para múltiples mensajes
             input_text = client_socket.recv(1024).decode('utf-8')
             if not input_text:
@@ -115,9 +106,27 @@ try:
             print(f"Enviando respuesta a {addr}: '{response}'")
             client_socket.sendall(response.encode('utf-8'))
             logging.info(f'Respuesta enviada a {addr}')
-        
-        client_socket.close()  # Cerrar la conexión del cliente aquí después del bucle
+    except Exception as e:
+        logging.error(f"Error al manejar la conexión del cliente {addr}: {e}")
+    finally:
+        client_socket.close()
+        logging.info(f"Conexión con el cliente {addr} cerrada.")
         print(f"Conexión con {addr} ha sido cerrada.")
+
+# Configuración del servidor sin SSL
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+host = 'localhost'
+port = 12345
+server_socket.bind((host, port))
+server_socket.listen(5)
+logging.info(f"Servidor escuchando en {host}:{port} sin SSL...")
+print(f"Servidor iniciado y escuchando en {host}:{port}")
+
+try:
+    while True:
+        client_socket, addr = server_socket.accept()
+        client_handler = threading.Thread(target=handle_client, args=(client_socket, addr))
+        client_handler.start()
 except KeyboardInterrupt:
     logging.info("Servidor cerrado por interrupción del teclado.")
     print("Servidor cerrado por interrupción del teclado.")

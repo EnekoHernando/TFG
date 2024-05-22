@@ -2,6 +2,7 @@ import os
 import logging
 import socket
 import time
+import threading
 from PyPDF2 import PdfReader
 from docx import Document as DocxDocument  # To avoid naming conflict with our Document class
 from llama_index.core import Document, VectorStoreIndex, StorageContext, load_index_from_storage
@@ -117,6 +118,33 @@ def chatbot(input_text, index_path):
     logging.info(f"Texto de respuesta: {response}")
     return response.response
 
+def handle_client(client_socket, addr, index_path):
+    print(f"Conectado con {addr}")
+    logging.info(f'Conectado con {addr}')
+    
+    try:
+        while True:
+            # Recibir texto del cliente
+            input_text = client_socket.recv(1024).decode('utf-8')
+            print(f'Texto recibido: {input_text}')
+            if input_text == "bye":
+                break
+            
+            # Calcular el tiempo de respuesta
+            start_time = time.time()
+            # Obtener respuesta del chatbot y enviarla de vuelta al cliente
+            response = chatbot(input_text, index_path)
+            end_time = time.time()
+            response_time = end_time - start_time
+            logging.info(f'Tiempo de respuesta: {response_time} segundos')
+            
+            client_socket.sendall(response.encode('utf-8'))
+    except Exception as e:
+        logging.error(f"Error al manejar la conexión del cliente {addr}: {e}")
+    finally:
+        client_socket.close()
+        logging.info(f"Conexión con el cliente {addr} cerrada.")
+
 # Crear el socket del servidor sin SSL
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = 'localhost'
@@ -153,31 +181,8 @@ finally:
         print("Ya se puede conectar al servidor")
         while True:
             client_socket, addr = server_socket.accept()
-            print(f"Conectado con {addr}")
-            logging.info(f'Conectado con {addr}')
-
-            try:
-                while True:
-                    # Recibir texto del cliente
-                    input_text = client_socket.recv(1024).decode('utf-8')
-                    print(f'Texto recibido: {input_text}')
-                    if input_text == "bye":
-                        break
-                    
-                    # Calcular el tiempo de respuesta
-                    start_time = time.time()
-                    # Obtener respuesta del chatbot y enviarla de vuelta al cliente
-                    response = chatbot(input_text, index_path)
-                    end_time = time.time()
-                    response_time = end_time - start_time
-                    logging.info(f'Tiempo de respuesta: {response_time} segundos')
-                    
-                    client_socket.sendall(response.encode('utf-8'))
-            except Exception as e:
-                logging.error(f"Error al manejar la conexión del cliente {addr}: {e}")
-            finally:
-                client_socket.close()
-                logging.info(f"Conexión con el cliente {addr} cerrada.")
+            client_handler = threading.Thread(target=handle_client, args=(client_socket, addr, index_path))
+            client_handler.start()
     except KeyboardInterrupt:
         logging.info("Servidor cerrado por interrupción del teclado.")
     finally:
