@@ -1,25 +1,4 @@
 INFO:root:Servidor escuchando en localhost:12345 sin SSL...
-INFO:root:Conectado con ('127.0.0.1', 58648)
-INFO:root:Mensaje recibido: Pregunta actual del cliente: Hola
-
-INFO:root:chatbot function, input text: Pregunta actual del cliente: Hola
-
-INFO:root:Completition
-INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
-INFO:root:Completition finished
-INFO:root:Tiempo de respuesta: 0.94 segundos
-INFO:root:Respuesta preparada: Respuesta: ¡Hola! ¿En qué puedo ayudarte hoy?
-INFO:root:Respuesta enviada a ('127.0.0.1', 58648)
-INFO:root:Mensaje recibido: Pregunta anterior del cliente: Respuesta: ¡Hola! ¿En qué puedo ayudarte hoy?
-Pregunta actual del cliente: Que sabes sobre python?
-
-INFO:root:chatbot function, input text: Pregunta anterior del cliente: Respuesta: ¡Hola! ¿En qué puedo ayudarte hoy?
-Pregunta actual del cliente: Que sabes sobre python?
-
-INFO:root:Completition
-INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
-INFO:root:Completition finished
-INFO:root:Tiempo de respuesta: 4.13 segundos
-INFO:root:Respuesta preparada: Python es un lenguaje de programación de alto nivel que permite expresar la solución de un problema en términos abstractos, cercanos a nuestro entendimiento o forma de resolverlo [doc1]. Las expresiones regulares son el modelo matemático adecuado para formalizar las normas léxicas de los lenguajes de programación, y son muy útiles para definir las frases correctas en el lenguaje [doc3]. Además, Python es uno de los lenguajes de programación de alto nivel como PASCAL, C, ADA, LISP, C++, JAVA [doc1]. ¿En qué más puedo ayudarte?
-INFO:root:Respuesta enviada a ('127.0.0.1', 58648)
-INFO:root:Socket del servidor cerrado.
+INFO:root:Conectado con ('127.0.0.1', 63776)
+INFO:root:Usuario Eneko conectado desde ('127.0.0.1', 63776)
+INFO:root:ConexiÃ³n con el cliente ('127.0.0.1', 63776) cerrada.
