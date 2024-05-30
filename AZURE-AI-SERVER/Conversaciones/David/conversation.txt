@@ -1,0 +1,8 @@
+User: Hola! Puedes explicarme que es un automata y los diferentes tipos que hay?
+Bot: ¡Hola! Claro que sí, un autómata es un modelo matemático que se utiliza para representar sistemas de estados y transiciones. Existen varios tipos de autómatas, entre ellos, los autómatas finitos, los autómatas con pila y las máquinas de Turing. Los autómatas finitos son capaces de aceptar o rechazar cadenas de símbolos en un lenguaje determinado y se dividen en deterministas y no deterministas. Los autómatas con pila se utilizan para reconocer lenguajes independientes del contexto y también se dividen en deterministas y no deterministas. Las máquinas de Turing son un modelo más poderoso de computación y se utilizan para representar cualquier proceso algorítmico. ¿Te gustaría saber más sobre algún tipo de autómata en particular? [doc1][doc2][doc3]
+User: que son los automatas con pila?
+Bot: Los autómatas con pila son un modelo de autómata que se utiliza para reconocer lenguajes independientes del contexto. Estos autómatas contienen una pila, que puede ser utilizada como memoria para almacenar información relevante durante el procesamiento de una cadena de símbolos. Los autómatas con pila se dividen en dos tipos: autómatas con pila deterministas y autómatas con pila no deterministas. También se puede utilizar una gramática independiente del contexto para generar un autómata con pila extendido, que simula la derivación de cadenas de la gramática almacenando en la pila las formas sentenciales. [doc1][doc2][doc3][doc4]
+User: Gracias!
+Bot: ¡De nada! ¿Te gustaría saber más sobre algún tipo de autómata en particular?
+User: byee
+Bot: ¡Adiós! Que tengas un buen día. Si tienes más preguntas en el futuro, no dudes en contactarme.

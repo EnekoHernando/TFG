@@ -6,6 +6,7 @@ import time
 from openai import AzureOpenAI
 import os
 import sys
+import json
 
 # Configurar la codificación predeterminada a UTF-8
 os.environ["PYTHONIOENCODING"] = "utf-8"
@@ -32,12 +33,22 @@ deployment_id = os.getenv("deploymentid")
 # Configuración del endpoint de Azure Search
 search_endpoint = os.getenv("AzureSearchEndpoint")
 search_key = os.getenv("AzureSearchKey")
-search_index_name = "prog1"
 session=""
 
+# Configuración del diccionario de índices y sus contextos
+indices_context = {
+    "cyc": "Contexto para CYC",
+    "eticacivica": "Contexto para Ética Cívica",
+    "prog1": "Contexto para Prog1",
+    "sapresumenesyejeneko": "Contexto para Sap Resumenes y Ejercicios NEKO",
+    "sapresumenesyejerprofe": "Contexto para Sap Resumenes y Ejercicios Profe",
+    "sistemasinformacion": "Contexto para Sistemas de Información"
+}
+
 class ChatbotHandler:
-    def __init__(self, username):
+    def __init__(self, username, index_name):
         self.username = username
+        self.index_name = index_name
         self.client = AzureOpenAI(api_version="2024-02-15-preview",
                                   azure_endpoint=os.getenv("AzureApiBase"),
                                   api_key=os.getenv("AzureApiKey"))
@@ -53,8 +64,6 @@ class ChatbotHandler:
             if os.path.isfile(file_path):
                 os.remove(file_path)
 
-        self.conversation_file = os.path.join(self.user_dir, "conversation.txt")
-        
     def chatbot(self, input_text):
         last_messages = self.read_last_messages(6)
         message_text = [{"role": "user", "content": msg} for msg in last_messages]
@@ -65,17 +74,17 @@ class ChatbotHandler:
             completion = self.client.chat.completions.create(
                 messages=message_text,
                 model=deployment_id,
-                extra_body={"data_sources":[
+                extra_body={"data_sources": [
                     {
                         "type": "azure_search",
                         "parameters": {
                             "endpoint": search_endpoint,
-                            "index_name": search_index_name,
+                            "index_name": self.index_name,
                             "semantic_configuration": "default",
                             "query_type": "simple",
                             "fields_mapping": {},
                             "in_scope": True,
-                            "role_information": "Eres un asistente de AI que tiene que ayudar a estudiantes de programación con python.",
+                            "role_information": indices_context[self.index_name],
                             "filter": None,
                             "strictness": 3,
                             "top_n_documents": 5,
@@ -83,8 +92,8 @@ class ChatbotHandler:
                                 "type": "api_key",
                                 "key": search_key
                             },
-                        "key":search_key,
-                        "indexName": search_index_name
+                        "key": search_key,
+                        "indexName": self.index_name
                         }
                     }]},
                 temperature=0.75,
@@ -131,10 +140,28 @@ def handle_client(client_socket, addr):
     print(f"Conexión establecida con {addr}")
 
     try:
-        username = client_socket.recv(1024).decode('utf-8').strip()
+        # Enviar la lista de índices al cliente
+        indices_json = json.dumps(indices_context)
+        client_socket.sendall(indices_json.encode('utf-8'))
+
+        data = client_socket.recv(1024).decode('utf-8').strip()
+        user_data = json.loads(data)
+        username = user_data.get("username")
+        selected_index = user_data.get("selected_index")
+
         logging.info(f'Usuario {username} conectado desde {addr}')
         client_socket.sendall(f"Bienvenido {username}!\n".encode('utf-8'))
-        chatbot_handler = ChatbotHandler(username)
+        
+        if selected_index in indices_context:
+            logging.info(f'Índice seleccionado por el cliente: {selected_index}')
+        else:
+            logging.error(f'Índice inválido seleccionado: {selected_index}')
+            client_socket.sendall("Índice inválido seleccionado.\n".encode('utf-8'))
+            client_socket.close()
+            return
+
+        chatbot_handler = ChatbotHandler(username, selected_index)
+
         while True:
             input_text = client_socket.recv(1024).decode('utf-8')
             if not input_text:
@@ -193,3 +220,8 @@ finally:
     server_socket.close()
     logging.info("Socket del servidor cerrado.")
     print("Socket del servidor cerrado.")
+
+
+
+
+#indices_context[self.index_name]

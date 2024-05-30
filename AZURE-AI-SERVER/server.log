@@ -1,4 +1,73 @@
 INFO:root:Servidor escuchando en localhost:12345 sin SSL...
-INFO:root:Conectado con ('127.0.0.1', 63776)
-INFO:root:Usuario Eneko conectado desde ('127.0.0.1', 63776)
-INFO:root:Conexión con el cliente ('127.0.0.1', 63776) cerrada.
+INFO:root:Conectado con ('127.0.0.1', 63923)
+INFO:root:Usuario Eneko conectado desde ('127.0.0.1', 63923)
+INFO:root:Índice seleccionado por el cliente: cyc
+INFO:root:Mensaje recibido de Eneko: ¡Hola!
+INFO:root:chatbot function, input text: ¡Hola!
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 0.72 segundos
+INFO:root:Respuesta preparada: Hola! ¿En qué puedo ayudarte hoy?
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: Dame ejemplos de gramaticas simples
+INFO:root:chatbot function, input text: Dame ejemplos de gramaticas simples
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 4.59 segundos
+INFO:root:Respuesta preparada: En la teoría de lenguajes formales, se pueden definir diferentes tipos de gramáticas, pero en general, una gramática simple es una gramática que genera un lenguaje finito o un lenguaje regular . Por ejemplo, el lenguaje de las cadenas que contienen cualquier número de "a" sobre el alfabeto T = {a, b} se puede definir como L = {a, aa, aaa, aaaa, aaaaa, ...} [doc2]. Otra gramática simple es el algoritmo de Markov, que es una forma de especificar lenguajes formales mediante un conjunto finito de reglas de producción [doc4]. Por ejemplo, se puede definir un algoritmo de Markov para el lenguaje que consiste en cadenas de la forma "ad dc" y "ba" [doc4].
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: Tienes ejercicios?
+INFO:root:chatbot function, input text: Tienes ejercicios?
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 3.86 segundos
+INFO:root:Respuesta preparada: Sí, hay algunos ejercicios en los documentos que he recuperado. Por ejemplo, en el , en la sección 7.11, hay varios ejercicios que involucran el diseño de máquinas de Turing y la creación de gramáticas independientes del contexto. También en el [doc4], en el capítulo 5, hay varios ejercicios que requieren la conversión de gramáticas ambiguas en gramáticas no ambiguas. ¿Hay algún ejercicio en particular que te interese?
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: Puedes darme los ejemplos?
+INFO:root:chatbot function, input text: Puedes darme los ejemplos?
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 4.95 segundos
+INFO:root:Respuesta preparada: Claro, en el [doc3], en la sección de ejercicios (sección 4.10), se presentan varios ejemplos de gramáticas simples. Algunos de estos ejemplos incluyen gramáticas para generar lenguajes con cadenas de caracteres en un orden específico, como "an bm cm dn" [doc3]. También hay ejemplos de gramáticas recursivas para representar lenguajes como "am bn am+n" [doc3]. Además, en el [doc1], se menciona que las gramáticas formales son un modelo matemático capaz de representar la sintaxis de cualquier lenguaje de programación, y se utiliza como herramienta fundamental en la construcción sistemática de compiladores [doc1][doc3]. ¿Te gustaría más información sobre algún ejemplo en particular?
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: Pero escritos, no referencias
+INFO:root:chatbot function, input text: Pero escritos, no referencias
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 5.34 segundos
+INFO:root:Respuesta preparada: ¡Claro! Te puedo proporcionar algunos ejemplos de gramáticas simples que se presentan en los documentos. En el , se presentan varios ejemplos de gramáticas simples, algunos de ellos incluyen gramáticas recursivas para representar lenguajes como "am bn am+n" y gramáticas para generar lenguajes con cadenas de caracteres en un orden específico, como "an bm cm dn". Además, en el [doc1], se menciona que las gramáticas formales son un modelo matemático capaz de representar la sintaxis de cualquier lenguaje de programación, y se utiliza como herramienta fundamental en la construcción sistemática de compiladores. ¿Te gustaría más detalles sobre algún ejemplo en particular?
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: puedes tabularlos para verlos mejor? y puedes hacerlos mas complejos?
+INFO:root:chatbot function, input text: puedes tabularlos para verlos mejor? y puedes hacerlos mas complejos?
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 7.00 segundos
+INFO:root:Respuesta preparada: Por supuesto, aquí te proporciono una tabla con algunos ejemplos de gramáticas simples que se presentan en los documentos:
+
+| Ejemplo de gramática | Descripción |
+| --- | --- |
+| an bn | Genera lenguajes con cadenas de caracteres en un orden específico |
+| am bn am+n | Gramática recursiva para representar lenguajes |
+| E → TR, R → +TR, R → R+T | Gramática para expresiones equivalentes a Gexp |
+| S → aB, B → bB, B → Bb, B → λ | Gramática para {abn | n ≥ 0} |
+| S → aS, S → Sb | Gramática para {abn | n ≥ 0} |
+
+Ten en cuenta que estos son solo algunos ejemplos simples, y que las gramáticas pueden ser mucho más complejas y con múltiples reglas de producción. ¿Te gustaría más detalles sobre algún ejemplo en particular o te gustaría que te proporcione gramáticas más complejas?
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: Gracias! 
+INFO:root:chatbot function, input text: Gracias! 
+INFO:root:Completion
+INFO:httpx:HTTP Request: POST https://suscripcionenekoayesa.openai.azure.com//openai/deployments/Preubas/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+INFO:root:Completion finished
+INFO:root:Tiempo de respuesta: 1.01 segundos
+INFO:root:Respuesta preparada: ¡De nada! Si tienes alguna otra pregunta, no dudes en preguntar.
+INFO:root:Respuesta enviada a ('127.0.0.1', 63923)
+INFO:root:Mensaje recibido de Eneko: bye
+INFO:root:Conexión con ('127.0.0.1', 63923) cerrada por el cliente.
+INFO:root:Conexión con el cliente ('127.0.0.1', 63923) cerrada.

@@ -1,0 +1,20 @@
+User: Hola! 
+Bot: Hola! ¿En qué puedo ayudarte hoy?
+User: Que son las variables en python, con ejemplos
+Bot: Las variables en Python son cajas donde se almacenan los datos del programa y su tipo puede cambiar dinámicamente [doc1]. Para definir una variable se le asigna un valor utilizando el símbolo igual (=). Los nombres de las variables no pueden empezar por un número, contener caracteres especiales ni espacios [doc1]. Aquí te muestro algunos ejemplos:
+
+```
+# Definir una variable de tipo entero
+edad = 25
+
+# Definir una variable de tipo float
+precio = 12.99
+
+# Definir una variable de tipo string
+nombre = "Juan"
+
+# Definir una variable de tipo boolean
+es_mayor_de_edad = True
+``` 
+
+En Python, los tipos de variables son dinámicos, lo que quiere decir que puedes decir que una variable es de un tipo y luego cambiarlo por otro [doc1]. También es posible realizar una asignación múltiple de variables y asignar varios valores en una sola línea [doc1].
