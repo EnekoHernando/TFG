@@ -7,9 +7,6 @@ from openai import AzureOpenAI
 import os
 import sys
 import json
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import uuid
 
 # Configurar la codificación predeterminada a UTF-8
 os.environ["PYTHONIOENCODING"] = "utf-8"
@@ -45,7 +42,6 @@ indices_context = {
     "sapresumenesyejeneko": "Contexto para Sap Resumenes y Ejercicios NEKO",
     "sapresumenesyejerprofe": "Contexto para Sap Resumenes y Ejercicios Profe",
     "sistemasinformacion": "Contexto para Sistemas de Información",
-    
 }
 
 class ChatbotHandler:
@@ -138,35 +134,6 @@ class ChatbotHandler:
             file.write(f"User: {message}\n")
             file.write(f"Bot: {response}\n")
 
-# Inicializar la aplicación Flask
-app = Flask(__name__)
-CORS(app)
-
-clients = {}
-
-@app.route('/connect', methods=['POST'])
-def connect():
-    data = request.json
-    username = data.get('username')
-    index = data.get('index')
-    session_id = str(uuid.uuid4())
-    clients[session_id] = ChatbotHandler(username, index)
-    return jsonify({"message": "Connected", "session_id": session_id})
-
-@app.route('/send_message', methods=['POST'])
-def send_message():
-    data = request.json
-    session_id = data.get('session_id')
-    message = data.get('message')
-    if session_id in clients:
-        response = clients[session_id].chatbot(message)
-        return jsonify({"response": response})
-    else:
-        return jsonify({"error": "Invalid session_id"}), 400
-
-def run_flask():
-    app.run(host='0.0.0.0', port=5000)
-
 def handle_client(client_socket, addr):
     logging.info(f'Conectado con {addr}')
     print(f"Conexión establecida con {addr}")
@@ -240,10 +207,6 @@ server_socket.listen(5)
 logging.info(f"Servidor escuchando en {host}:{port} sin SSL...")
 print(f"Servidor iniciado y escuchando en {host}:{port}")
 
-# Iniciar el servidor Flask en un hilo separado
-flask_thread = threading.Thread(target=run_flask)
-flask_thread.start()
-
 try:
     while True:
         client_socket, addr = server_socket.accept()
@@ -256,3 +219,8 @@ finally:
     server_socket.close()
     logging.info("Socket del servidor cerrado.")
     print("Socket del servidor cerrado.")
+
+
+
+
+#indices_context[self.index_name]

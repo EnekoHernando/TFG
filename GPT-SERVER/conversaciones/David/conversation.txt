@@ -1,0 +1,6 @@
+Cliente: Que es un GMAO?
+
+Bot: Un GMAO es un sistema de gestión de mantenimiento asistido por ordenador.
+Cliente: puedes darme una explicación mas extensa? como por ejemplo para que sirve
+
+Bot: Un GMAO, o sistema de gestión de mantenimiento asistido por ordenador, es una herramienta que se utiliza para planificar, controlar y gestionar todas las actividades relacionadas con el mantenimiento de equipos, maquinaria e instalaciones en una organización. Este sistema permite llevar un registro detallado de las tareas de mantenimiento preventivo y correctivo, programar actividades, gestionar el inventario de repuestos, controlar los costos asociados al mantenimiento, y generar informes para analizar la eficiencia de las operaciones de mantenimiento. En resumen, un GMAO es fundamental para optimizar la gestión de mantenimiento, aumentar la vida útil de los activos, minimizar tiempos de inactividad no planificados y mejorar la productividad general de la empresa.

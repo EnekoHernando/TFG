@@ -1,0 +1,18 @@
+Cliente: ¡hOLA!
+Bot: Saludos.
+Cliente: Explicame como funcinoan las listas multidimensionales con ejemplos
+Bot: Las listas multidimensionales en Python permiten almacenar datos de forma estructurada en múltiples dimensiones. Por ejemplo, se pueden crear listas bidimensionales como la siguiente:
+
+tabla = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+
+Esto representa una tabla con filas y columnas. Para acceder a elementos específicos, se utilizan índices múltiples, por ejemplo, tabla[0][0] accede al primer elemento de la primera fila.
+
+También es posible crear listas tridimensionales, como en el siguiente ejemplo:
+
+cubo = [ [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ],
+       [ [10, 11, 12], [13, 14, 15], [16, 17, 18] ], 
+       [ [19, 20, 21], [22, 23, 24], [25, 26, 28] ] ]
+
+En este caso, se tienen múltiples niveles de profundidad para representar la información. Acceder a elementos en listas tridimensionales requiere índices adicionales, por ejemplo, cubo[0][0][0] accede al primer elemento del primer nivel del cubo.
+
+En resumen, las listas multidimensionales permiten organizar datos de manera más compleja, facilitando el manejo de información estructurada en diferentes niveles.

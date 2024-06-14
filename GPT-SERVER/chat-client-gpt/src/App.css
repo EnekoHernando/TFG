@@ -1,0 +1,37 @@
+.App {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+input {
+  margin: 5px;
+}
+
+button {
+  margin: 5px;
+}
+
+.chat {
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 700px; /* Aumentar el tamaño del cuadro de chat */
+  overflow-y: scroll;
+  margin-bottom: 10px;
+  font-size: 14px; /* Ajustar el tamaño del texto */
+}
+
+.message-content {
+  font-size: 15px; /* Ajustar el tamaño del texto dentro de los mensajes */
+}
+
+.user-message {
+  text-align: left; /* Alinear mensajes del usuario a la izquierda */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bot-message {
+  text-align: right; /* Alinear mensajes del bot a la derecha */
+  display: flex;
+  justify-content: flex-end;
+}
